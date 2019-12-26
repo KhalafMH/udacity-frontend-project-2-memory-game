@@ -22,7 +22,7 @@
 </head>
 <body>
 
-<div class="container">
+<div id="game-container" class="container">
     <div class="row">
         <div class="col text-center">
             <h1>Matching Game</h1>
@@ -41,7 +41,24 @@
     <div class="container d-flex align-items-center justify-content-center" id="cards-area"></div>
 </div>
 
-<footer>icons source: <a href="https://www.iconfinder.com/Rudityas">https://www.iconfinder.com/Rudityas</a></footer>
+<div id="finish-container" class="container gone">
+    <div class="row justify-content-center m-5">
+        <img src="assets/icons/check-24px.svg" alt="checkmark" id="checkmark"
+             class="border border-sm border-success rounded-circle"/>
+    </div>
+    <div class="row justify-content-center">
+        <h1>Congratulations! You Won!</h1>
+    </div>
+    <div class="row justify-content-center">
+        <p>With <span id="num-moves-finish">0</span> Moves</p>
+    </div>
+    <div class="row justify-content-center">
+        <button class="btn btn-primary" onclick="restartGame()">Play Again</button>
+    </div>
+</div>
+
+<footer class="fixed-bottom">icons source: <a href="https://www.iconfinder.com/Rudityas">https://www.iconfinder.com/Rudityas</a>
+</footer>
 </body>
 
 <script src="js/create-cards.js"></script>

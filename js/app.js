@@ -75,7 +75,9 @@ function app() {
     }
 
     function endGame() {
-        console.log(`Game Ended`);
+        document.getElementById("num-moves-finish").textContent = moves.toString();
+        document.getElementById("game-container").classList.toggle("gone");
+        document.getElementById("finish-container").classList.toggle("gone");
     }
 }
 

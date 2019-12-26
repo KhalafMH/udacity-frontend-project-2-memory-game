@@ -6,6 +6,11 @@
     box-shadow: 8px 8px 20px;
 }
 
+#checkmark {
+    width: 10vmin;
+    height: 10vmin;
+}
+
 .game-card {
     width: 15vh;
     height: 15vh;
@@ -29,4 +34,8 @@
 
 .hidden {
     visibility: hidden;
+}
+
+.gone {
+    display: none;
 }
