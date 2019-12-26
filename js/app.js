@@ -8,6 +8,9 @@ function app() {
     const matchedCards = [];
     const starsElements = [];
     let stars = NUMBER_OF_STARS;
+    let time = performance.now() / 1000;
+    const timerElement = document.getElementById("timer");
+    let gameEnded = false;
 
     // add the stars to the DOM
     const starsContainer = document.getElementById("stars-container");
@@ -97,9 +100,30 @@ function app() {
     function endGame() {
         document.getElementById("num-moves-finish").textContent = moves.toString();
         document.getElementById("num-stars-finish").textContent = stars.toString();
+        document.getElementById("time-finish").textContent = createTimeString();
         document.getElementById("game-container").classList.toggle("gone");
         document.getElementById("finish-container").classList.toggle("gone");
+        time = performance.now() / 1000;
+        gameEnded = true;
     }
+
+    function updateTimer() {
+        time = performance.now() / 1000;
+        timerElement.textContent = createTimeString();
+
+        // Update the timer every second
+        setTimeout(() => {
+            if (!gameEnded) {
+                updateTimer();
+            }
+        }, 1000)
+    }
+
+    function createTimeString() {
+        return `${Math.floor(time / 3600).toString().padStart(2, "0")}:${Math.floor(time / 60).toString().padStart(2, "0")}:${Math.floor(time % 60).toString().padStart(2, "0")}`
+    }
+
+    updateTimer();
 }
 
 function restartGame() {
