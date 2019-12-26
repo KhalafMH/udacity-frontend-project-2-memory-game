@@ -1,4 +1,4 @@
-const CARD_FLIP_TIMEOUT = 3000;
+const CARD_FLIP_TIMEOUT = 1500;
 
 // using a function to isolate the scope
 function app() {
@@ -12,14 +12,7 @@ function app() {
             && !event.target.classList.contains('flipped')
             && flippedCards.length < 2
         ) {
-            event.target.classList.toggle('flipped');
-            flippedCards.push(event.target);
-            if (flippedCards.length === 2) {
-                incrementMoves();
-                setTimeout(() => {
-                    clearFlippedCards();
-                }, CARD_FLIP_TIMEOUT);
-            }
+            flipCard(event.target)
         }
     };
     cardsContainer.addEventListener('click', listener);
@@ -30,9 +23,22 @@ function app() {
         movesElement.textContent = moves.toString();
     }
 
+    function flipCard(card) {
+        card.classList.toggle('flipped');
+        card.querySelector("img").classList.toggle("hidden");
+        flippedCards.push(card);
+        if (flippedCards.length === 2) {
+            incrementMoves();
+            setTimeout(() => {
+                clearFlippedCards();
+            }, CARD_FLIP_TIMEOUT);
+        }
+    }
+
     function clearFlippedCards() {
         for (const card of flippedCards) {
-            card.classList.remove('flipped');
+            card.classList.toggle('flipped');
+            card.querySelector("img").classList.toggle("hidden")
         }
         flippedCards = [];
     }
