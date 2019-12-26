@@ -4,6 +4,7 @@ const CARD_FLIP_TIMEOUT = 1500;
 function app() {
     let moves = 0;
     let flippedCards = [];
+    const matchedCards = [];
 
     const cardsContainer = document.getElementById('cards-area');
     let listener = function (event) {
@@ -24,23 +25,57 @@ function app() {
     }
 
     function flipCard(card) {
-        card.classList.toggle('flipped');
-        card.querySelector("img").classList.toggle("hidden");
+        card.classList.add('flipped');
+        card.querySelector("img").classList.remove("hidden");
         flippedCards.push(card);
         if (flippedCards.length === 2) {
             incrementMoves();
-            setTimeout(() => {
-                clearFlippedCards();
-            }, CARD_FLIP_TIMEOUT);
+            if (cardsAreMatching(flippedCards[0], flippedCards[1])) {
+                onMatchedCards(flippedCards[0], flippedCards[1]);
+            } else {
+                onUnmatchedCards(flippedCards[0], flippedCards[1]);
+            }
         }
     }
 
     function clearFlippedCards() {
         for (const card of flippedCards) {
-            card.classList.toggle('flipped');
-            card.querySelector("img").classList.toggle("hidden")
+            card.classList.remove('flipped', 'matched-wrong');
+            card.querySelector("img").classList.add("hidden")
         }
         flippedCards = [];
+    }
+
+    function cardsAreMatching(card1, card2) {
+        const src1 = card1.querySelector('img').getAttribute('src');
+        const src2 = card2.querySelector('img').getAttribute('src');
+        return src1 === src2;
+    }
+
+    function onMatchedCards(card1, card2) {
+        card1.classList.add("matched-correct");
+        card2.classList.add("matched-correct");
+        matchedCards.push(card1, card2);
+        if (matchedCards.length === 16) {
+            endGame();
+        }
+        setTimeout(() => {
+            card1.classList.remove("matched-correct");
+            card2.classList.remove("matched-correct");
+            flippedCards = [];
+        }, CARD_FLIP_TIMEOUT)
+    }
+
+    function onUnmatchedCards(card1, card2) {
+        card1.classList.add("matched-wrong");
+        card2.classList.add("matched-wrong");
+        setTimeout(() => {
+            clearFlippedCards();
+        }, CARD_FLIP_TIMEOUT);
+    }
+
+    function endGame() {
+        // TODO
     }
 }
 

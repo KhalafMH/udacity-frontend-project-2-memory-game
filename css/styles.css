@@ -16,7 +16,15 @@
 }
 
 .flipped {
-    background-color: red;
+    background-color: #556b82;
+}
+
+.matched-correct {
+    background-color: #50ca52;
+}
+
+.matched-wrong {
+    background-color: #ca3931;
 }
 
 .hidden {
