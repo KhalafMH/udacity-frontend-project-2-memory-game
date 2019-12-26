@@ -75,8 +75,12 @@ function app() {
     }
 
     function endGame() {
-        // TODO
+        console.log(`Game Ended`);
     }
+}
+
+function restartGame() {
+    location.reload();
 }
 
 app();
