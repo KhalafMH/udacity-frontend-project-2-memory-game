@@ -1,10 +1,22 @@
 const CARD_FLIP_TIMEOUT = 1500;
+const NUMBER_OF_STARS = 3;
 
 // using a function to isolate the scope
 function app() {
     let moves = 0;
     let flippedCards = [];
     const matchedCards = [];
+    const starsElements = [];
+    let stars = NUMBER_OF_STARS;
+
+    // add the stars to the DOM
+    const starsContainer = document.getElementById("stars-container");
+    for (let i = 0; i < NUMBER_OF_STARS; i++) {
+        const img = document.createElement('img');
+        img.setAttribute('src', 'assets/icons/star-24px.svg');
+        starsContainer.appendChild(img);
+        starsElements.push(img);
+    }
 
     const cardsContainer = document.getElementById('cards-area');
     let listener = function (event) {
@@ -20,6 +32,14 @@ function app() {
 
     function incrementMoves() {
         moves++;
+        if (moves > 12 && stars === NUMBER_OF_STARS) {
+            starsElements[2].src = "assets/icons/star_border-24px.svg";
+            stars--;
+        }
+        if (moves > 18 && stars === (NUMBER_OF_STARS - 1)) {
+            starsElements[1].src = "assets/icons/star_border-24px.svg";
+            stars--;
+        }
         const movesElement = document.getElementById('num-moves');
         movesElement.textContent = moves.toString();
     }
@@ -76,6 +96,7 @@ function app() {
 
     function endGame() {
         document.getElementById("num-moves-finish").textContent = moves.toString();
+        document.getElementById("num-stars-finish").textContent = stars.toString();
         document.getElementById("game-container").classList.toggle("gone");
         document.getElementById("finish-container").classList.toggle("gone");
     }
