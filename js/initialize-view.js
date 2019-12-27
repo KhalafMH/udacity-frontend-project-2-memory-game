@@ -1,5 +1,9 @@
 // using a function to isolate the scope
-function createCards() {
+function initializeView() {
+    // initialize the number of moves view
+    document.getElementById("num-moves").textContent = 0;
+
+    // create a randomized array of icons
     let iconSources = [
         "assets/img/balloon.svg",
         "assets/img/beard.svg",
@@ -13,7 +17,8 @@ function createCards() {
     iconSources.push(...iconSources);
     iconSources = _.shuffle(iconSources);
 
-    const fragment = document.createDocumentFragment();
+    // will contain the cards
+    const cardsFragment = document.createDocumentFragment();
 
     // create four rows of cards
     for (let i = 0; i < 4; i++) {
@@ -22,9 +27,11 @@ function createCards() {
 
         // create four cards in a row
         for (let j = 0; j < 4; j++) {
+            // the card object
             const card = document.createElement('div');
             card.className = "d-flex col-auto game-card align-items-center justify-content-center";
 
+            // the image inside the card
             const icon = document.createElement('img');
             icon.setAttribute("src", iconSources[4 * i + j]);
             icon.classList.add("hidden");
@@ -33,11 +40,11 @@ function createCards() {
             row.appendChild(card);
         }
 
-        fragment.appendChild(row);
+        cardsFragment.appendChild(row);
     }
 
     const cardsContainer = document.getElementById("cards-area");
-    cardsContainer.appendChild(fragment);
+    cardsContainer.appendChild(cardsFragment);
 }
 
-createCards();
+initializeView();
