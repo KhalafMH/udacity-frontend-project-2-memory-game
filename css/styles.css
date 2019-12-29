@@ -1,9 +1,7 @@
 #cards-area {
-    width: 70vh;
-    height: 70vh;
+    width: 80vmin;
+    height: 80vmin;
     background-color: mediumaquamarine;
-    border-radius: 32px;
-    box-shadow: 8px 8px 20px;
 }
 
 #checkmark {
@@ -12,12 +10,15 @@
 }
 
 .game-card {
-    width: 15vh;
-    height: 15vh;
+    width: 17vmin;
+    height: 17vmin;
     background-color: #424242;
-    border-radius: 32px;
-    box-shadow: 8px 8px 20px;
-    margin: 1vh;
+    margin: 1vmin;
+}
+
+.card-box {
+    border-radius: 2vmin;
+    box-shadow: 0.6vmin 0.6vmin 2vmin;
 }
 
 .flipped {
@@ -38,4 +39,36 @@
 
 .gone {
     display: none;
+}
+
+h1 {
+    font-size: 6vmin;
+}
+
+h3 {
+    font-size: 4vmin;
+}
+
+span {
+    font-size: 2.5vmin;
+}
+
+/* used for keeping the footer at the bottom */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+/* used for keeping the footer at the bottom */
+body {
+    margin-bottom: 60px; /* Margin bottom by footer height */
+}
+
+/* used for keeping the footer at the bottom */
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Set the fixed height of the footer here */
+    line-height: 60px; /* Vertically center the text there */
 }

@@ -17,6 +17,7 @@ function app() {
     for (let i = 0; i < NUMBER_OF_STARS; i++) {
         const img = document.createElement('img');
         img.setAttribute('src', 'assets/icons/star-24px.svg');
+        img.className = "img-fluid";
         starsContainer.appendChild(img);
         starsElements.push(img);
     }

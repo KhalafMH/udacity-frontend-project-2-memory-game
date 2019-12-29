@@ -29,12 +29,12 @@ function initializeView() {
         for (let j = 0; j < 4; j++) {
             // the card object
             const card = document.createElement('div');
-            card.className = "d-flex col-auto game-card align-items-center justify-content-center";
+            card.className = "d-flex col-auto game-card align-items-center justify-content-center card-box";
 
             // the image inside the card
             const icon = document.createElement('img');
             icon.setAttribute("src", iconSources[4 * i + j]);
-            icon.classList.add("hidden");
+            icon.classList.add("hidden", "img-fluid");
 
             card.appendChild(icon);
             row.appendChild(card);

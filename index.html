@@ -2,10 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matching Game</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -29,18 +27,21 @@
             <h1>Matching Game</h1>
         </div>
     </div>
-    <div class="row score-area text-center">
-        <div class="col">
-            <span id="stars-container" class="mr-1"><!--the current stars rating. will be updated dynamically--></span>
+    <div class="row m-auto score-area justify-content-center" style="width: 70vmin">
+        <div class="col-5">
+            <span id="stars-container"><!--the current stars rating. will be updated dynamically--></span>
+        </div>
+        <div class="col-4">
             <span id="num-moves"><!--the number of moves. will be updated dynamically--></span>
             <span> Moves</span>
         </div>
-        <div class="col">
+        <div class="col-0"></div>
+        <div class="col-3">
             <img id="restart-icon" class="btn" src="assets/icons/refresh-24px.svg" alt="restart icon"
                  onclick="restartGame()">
         </div>
     </div>
-    <div class="container d-flex align-items-center justify-content-center" id="cards-area">
+    <div class="container d-flex align-items-center justify-content-center card-box align-self-stretch" id="cards-area">
         <!--will be populated with cards dynamically-->
     </div>
     <div class="row justify-content-center m-3">
@@ -75,7 +76,10 @@
     </div>
 </div>
 
-<footer class="fixed-bottom">icons source: <a href="https://www.iconfinder.com/Rudityas">https://www.iconfinder.com/Rudityas</a>
+<footer class="footer">
+            <span class="m-3 text-muted">
+                icons source: <a class="text-muted" href="https://www.iconfinder.com/Rudityas">https://www.iconfinder.com/Rudityas</a>
+            </span>
 </footer>
 </body>
 
