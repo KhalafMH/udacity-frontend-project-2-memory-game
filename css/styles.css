@@ -14,6 +14,12 @@
     height: 17vmin;
     background-color: #424242;
     margin: 1vmin;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.game-image {
+    opacity: 100%;
+    transition: opacity 0.1s ease-in-out;
 }
 
 .card-box {
@@ -34,7 +40,7 @@
 }
 
 .hidden {
-    visibility: hidden;
+    opacity: 0;
 }
 
 .gone {

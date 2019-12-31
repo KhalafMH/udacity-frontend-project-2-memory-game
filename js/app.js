@@ -17,7 +17,7 @@ function app() {
     for (let i = 0; i < NUMBER_OF_STARS; i++) {
         const img = document.createElement('img');
         img.setAttribute('src', 'assets/icons/star-24px.svg');
-        img.className = "img-fluid";
+        img.className = "game-image img-fluid";
         starsContainer.appendChild(img);
         starsElements.push(img);
     }
@@ -25,13 +25,15 @@ function app() {
     // set the click listener for the cards
     const cardsContainer = document.getElementById('cards-area');
     let listener = function (event) {
-        if (
-            event.target.classList.contains('game-card')
-            && !event.target.classList.contains('flipped')
-            && selectedCards.length < 2
-        ) {
-            flipCard(event.target)
-        }
+        event.composedPath().forEach(element => {
+            if (
+                element.classList.contains('game-card')
+                && !element.classList.contains('flipped')
+                && selectedCards.length < 2
+            ) {
+                flipCard(element);
+            }
+        });
     };
     cardsContainer.addEventListener('click', listener);
 
