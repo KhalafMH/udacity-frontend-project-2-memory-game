@@ -34,7 +34,7 @@ function initializeView() {
             // the image inside the card
             const icon = document.createElement('img');
             icon.setAttribute("src", iconSources[4 * i + j]);
-            icon.classList.add("hidden", "img-fluid");
+            icon.classList.add("game-card__image--hidden", "img-fluid");
 
             card.appendChild(icon);
             row.appendChild(card);

@@ -17,7 +17,7 @@ function app() {
     for (let i = 0; i < NUMBER_OF_STARS; i++) {
         const img = document.createElement('img');
         img.setAttribute('src', 'assets/icons/star-24px.svg');
-        img.className = "game-image img-fluid";
+        img.className = "game-card__image img-fluid";
         starsContainer.appendChild(img);
         starsElements.push(img);
     }
@@ -28,7 +28,7 @@ function app() {
         event.composedPath().forEach(element => {
             if (
                 element.classList.contains('game-card')
-                && !element.classList.contains('flipped')
+                && !element.classList.contains('game-card--flipped')
                 && selectedCards.length < 2
             ) {
                 flipCard(element);
@@ -59,8 +59,8 @@ function app() {
      * @param {HTMLElement} card - The card element to be flipped.
      */
     function flipCard(card) {
-        card.classList.add('flipped');
-        card.querySelector("img").classList.remove("hidden");
+        card.classList.add('game-card--flipped');
+        card.querySelector("img").classList.remove("game-card__image--hidden");
         selectedCards.push(card);
         if (selectedCards.length === 2) {
             onMoveCompleted();
@@ -77,8 +77,8 @@ function app() {
      */
     function clearFlippedCards() {
         for (const card of selectedCards) {
-            card.classList.remove('flipped', 'matched-wrong');
-            card.querySelector("img").classList.add("hidden")
+            card.classList.remove('game-card--flipped', 'game-card--matched-wrong');
+            card.querySelector("img").classList.add("game-card__image--hidden")
         }
         selectedCards = [];
     }
@@ -102,15 +102,15 @@ function app() {
      * @param {HTMLElement} card2 - The second card.
      */
     function onMatchedCards(card1, card2) {
-        card1.classList.add("matched-correct");
-        card2.classList.add("matched-correct");
+        card1.classList.add("game-card--matched-correct");
+        card2.classList.add("game-card--matched-correct");
         matchedCards.push(card1, card2);
         if (matchedCards.length === 16) {
             endGame();
         }
         setTimeout(() => {
-            card1.classList.remove("matched-correct");
-            card2.classList.remove("matched-correct");
+            card1.classList.remove("game-card--matched-correct");
+            card2.classList.remove("game-card--matched-correct");
             selectedCards = [];
         }, CARD_FLIP_TIMEOUT)
     }
@@ -122,8 +122,8 @@ function app() {
      * @param {HTMLElement} card2 - The second card.
      */
     function onUnmatchedCards(card1, card2) {
-        card1.classList.add("matched-wrong");
-        card2.classList.add("matched-wrong");
+        card1.classList.add("game-card--matched-wrong");
+        card2.classList.add("game-card--matched-wrong");
         setTimeout(() => {
             clearFlippedCards();
         }, CARD_FLIP_TIMEOUT);

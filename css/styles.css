@@ -9,6 +9,22 @@
     height: 10vmin;
 }
 
+/* ------------------------------------------------------------------------- */
+/* region - General styles */
+.card-box {
+    border-radius: 2vmin;
+    box-shadow: 0.6vmin 0.6vmin 2vmin;
+}
+
+.gone {
+    display: none;
+}
+
+/* endregion - General styles */
+/* ------------------------------------------------------------------------- */
+
+/* ------------------------------------------------------------------------- */
+/* region - Game Card */
 .game-card {
     width: 17vmin;
     height: 17vmin;
@@ -17,36 +33,32 @@
     transition: background-color 0.1s ease-in-out;
 }
 
-.game-image {
+.game-card--flipped {
+    background-color: #556b82;
+}
+
+.game-card--matched-correct {
+    background-color: #50ca52;
+}
+
+.game-card--matched-wrong {
+    background-color: #ca3931;
+}
+
+.game-card__image {
     opacity: 100%;
     transition: opacity 0.1s ease-in-out;
 }
 
-.card-box {
-    border-radius: 2vmin;
-    box-shadow: 0.6vmin 0.6vmin 2vmin;
-}
-
-.flipped {
-    background-color: #556b82;
-}
-
-.matched-correct {
-    background-color: #50ca52;
-}
-
-.matched-wrong {
-    background-color: #ca3931;
-}
-
-.hidden {
+.game-card__image--hidden {
     opacity: 0;
 }
 
-.gone {
-    display: none;
-}
+/* endregion - Game Card */
+/* ------------------------------------------------------------------------- */
 
+/* ------------------------------------------------------------------------- */
+/* region - setting responsive font sizes */
 h1 {
     font-size: 6vmin;
 }
@@ -59,18 +71,20 @@ span {
     font-size: 2.5vmin;
 }
 
-/* used for keeping the footer at the bottom */
+/* endregion - setting responsive font sizes */
+/* ------------------------------------------------------------------------- */
+
+/* ------------------------------------------------------------------------- */
+/* region - positioning the footer at the bottom  */
 html {
     position: relative;
     min-height: 100%;
 }
 
-/* used for keeping the footer at the bottom */
 body {
     margin-bottom: 60px; /* Margin bottom by footer height */
 }
 
-/* used for keeping the footer at the bottom */
 .footer {
     position: absolute;
     bottom: 0;
@@ -78,3 +92,6 @@ body {
     height: 60px; /* Set the fixed height of the footer here */
     line-height: 60px; /* Vertically center the text there */
 }
+
+/* endregion - positioning the footer at the bottom*/
+/* ------------------------------------------------------------------------- */
