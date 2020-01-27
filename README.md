@@ -3,6 +3,10 @@ My implementation of the "Concentration" game for the second project of the Udac
 
 
 ## Playing the Game
+A live version of the game is hosted at:
+
+https://khalafmh.github.io/udacity-frontend-project-2-memory-game/
+
 The game rules are as follows:
 
 * The user is presented with a grid of 16 cards with hidden images.
